@@ -58,9 +58,20 @@ public class Main {
 				}
 		} while (!seatValidation);
 				
+		Evento evento = new Evento(title, date, seats);
+		System.out.println("Evento creato: " + evento);
 				
-				
-				
+		//Prenotazioni
+		System.out.print("Quante prenotazioni vuoi effettuare?");
+		int reservations = scanner.nextInt();
+		for (int i = 0; i < reservations; i++) {
+			System.out.println(evento.book());
+		}
+		
+		
+		
+		
+		
 		}
 		
 }

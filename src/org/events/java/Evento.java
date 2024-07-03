@@ -66,7 +66,7 @@ public class Evento {
 	//Metodo che restituisce la data formattata
 	
 	//Metodi pubblici per le prenotazioni e le disdette
-	public String reservation() {
+	public String book() {
 		if (LocalDate.now().isAfter(this.date)) {
 			return "L'evento è già passato!";
 		} else if (this.bookedSeats == this.seats) {
