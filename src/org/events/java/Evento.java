@@ -11,15 +11,17 @@ public class Evento {
 	private int bookedSeats;
 	
 	//Costruttori con eccezione
-	public Evento(String title, LocalDate date, int seats) throws IllegalArgumentException {
+	public Evento(String title, LocalDate date, int seats) {
 		
 		//Controlla se la data dell'evento è passata e avvisiamo l'utente
 		if (date.isBefore(LocalDate.now())) { 
-			throw new IllegalArgumentException("La data dell'evento non può essere nel passato");
+			System.out.println("La data dell'evento non può essere nel passato");
+			return;
 		}
 		//Verificare che il numero di posti sia positivo
 		if (seats <= 0) {
-			throw new IllegalArgumentException("Il numero di posti totali deve essere positivo.");
+			System.out.println("Il numero di posti totali deve essere positivo.");
+			return;
 		}
 		
 		this.title = title;
@@ -43,9 +45,10 @@ public class Evento {
 		return date;
 	}
 	
-	public void setDate(LocalDate date) throws IllegalArgumentException {
+	public void setDate(LocalDate date) {
 		if (date.isBefore(LocalDate.now())) {
-			throw new IllegalArgumentException("La data dell'evento non può essere nel passato");
+			System.out.println("La data dell'evento non può essere nel passato");
+			return;
 		}
 		this.date = date;
 	}
