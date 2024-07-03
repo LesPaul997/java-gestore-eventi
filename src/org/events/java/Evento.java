@@ -10,27 +10,28 @@ public class Evento {
 	private int seats;
 	private int bookedSeats;
 	
-	//Costruttori
-	public Evento(String title, LocalDate date, int seats) {
-		this.title = title;
-		this.date = date;
+	//Costruttori con eccezione
+	public Evento(String title, LocalDate date, int seats) throws IllegalArgumentException {
 		
 		//Controlla se la data dell'evento è passata e avvisiamo l'utente
-		if (LocalDate.now().isAfter(this.date)) 
-			System.out.printf("\nL'evento è già stato svolto", this);
-		
+		if (date.isBefore(LocalDate.now())) { 
+			throw new IllegalArgumentException("La data dell'evento non può essere nel passato");
+		}
 		//Verificare che il numero di posti sia positivo
 		if (seats <= 0) {
-			System.out.printf("\nL'evento '%s' non ha posti disponibili", this);
-			this.seats = 0;
-		} else this.seats = seats;
+			throw new IllegalArgumentException("Il numero di posti totali deve essere positivo.");
+		}
+		
+		this.title = title;
+		this.date = date;
+		this.seats = seats;
 		this.bookedSeats = 0;
 		
 	}
 	
 	//Getter e Setter per la variabile di istanza TITLE
 	public String getTitle() {
-		return this.title;
+		return title;
 	}
 	
 	public void setTitle(String title) {
@@ -39,22 +40,55 @@ public class Evento {
 	
 	//Getter e Setter per la variabile di istanza LOCALDATE
 	public LocalDate getDate() {
-		return this.date;
+		return date;
 	}
 	
-	public void setDate(LocalDate date) {
+	public void setDate(LocalDate date) throws IllegalArgumentException {
+		if (date.isBefore(LocalDate.now())) {
+			throw new IllegalArgumentException("La data dell'evento non può essere nel passato");
+		}
 		this.date = date;
 	}
 	
 	//Getter per la variabile di istanza SEATS
 	public int getSeats() {
-		return this.seats;
+		return seats;
 	}
 	
 	//Getter per la variabile di istanza BOOKEDSEATS
 	public int getBookedSeats() {
-		return this.bookedSeats;
+		return bookedSeats;
 	}
 	
+	//Metodo che restituisce la data formattata
 	
+	//Metodi pubblici per le prenotazioni e le disdette
+	public String reservation() {
+		if (LocalDate.now().isAfter(this.date)) {
+			return "L'evento è già passato!";
+		} else if (this.bookedSeats == this.seats) {
+			return ("Non ci sono posti disponibili per effettuare la prenotazione");
+		} else {
+			this.bookedSeats++;
+			return "Prenotazione effettuata con successo.";
+		}
+	}
+	
+	public String cancelReservation() {
+		if (LocalDate.now().isAfter(this.date)) {
+			return "L'evento è già passato!";
+		} else if (this.bookedSeats == 0) {
+			return "Non sono presenti posti prenotati da disdire";
+		} else {
+			this.bookedSeats--;
+			return "Prenotazione cancellata con successo";
+		}
+	}
+	
+	//Override del metodo toString
+	@Override
+	public String toString() {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		return date.format(formatter) + " - " + title;
+	}
 }
