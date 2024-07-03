@@ -41,6 +41,22 @@ public class Main {
             }
         } while (!valideDate);
 				
+		//Ciclo Do-while per l'inserimento del numero totale di posti
+		boolean seatValidation = false;
+		do {
+			System.out.print("Inserisci il numero totale di posti: ");
+				if (scanner.hasNextInt()) {
+					seats = scanner.nextInt();
+					if (seats <= 0) {
+						System.out.println("Errore: Il numero di posti totali deve essere positivo.");
+					} else {
+						seatValidation = true;
+					}
+				} else {
+					System.out.println("Errore: Inserisci un numero di posti valido.");
+					scanner.next(); //Scartiamo l'input non valido
+				}
+		} while (!seatValidation);
 				
 				
 				
