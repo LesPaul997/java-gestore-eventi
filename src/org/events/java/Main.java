@@ -68,7 +68,8 @@ public class Main {
 			System.out.println(evento.book());
 		}
 		
-		
+		System.out.println("Posti prenotati: " + evento.getBookedSeats());
+        System.out.println("Posti disponibili: " + (evento.getSeats() - evento.getBookedSeats()));
 		
 		
 		
