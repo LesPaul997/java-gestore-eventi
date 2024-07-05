@@ -8,9 +8,28 @@ public class Concerto extends Evento {
 	private LocalTime time;
 	private double price;
 	
+	//Costruttore
 	public Concerto(String title, LocalDate date, int seats, LocalTime time, double price) {
 		super(title, date, seats);
 		this.time = time;
+		this.price = price;
+	}
+	
+	//Getter e Setter per la variabile TIME
+	public LocalTime getTime() {
+		return time;
+	}
+	
+	public void setTime(LocalTime time) {
+		this.time = time;
+	}
+	
+	//Getter e Setter per la variabile PRICE
+	public double getPrice() {
+		return price;
+	}
+	
+	public void setPrice(double price) {
 		this.price = price;
 	}
 	
