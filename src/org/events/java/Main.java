@@ -71,8 +71,17 @@ public class Main {
 		System.out.println("Posti prenotati: " + evento.getBookedSeats());
         System.out.println("Posti disponibili: " + (evento.getSeats() - evento.getBookedSeats()));
 		
-		
-		
+		//Disdette
+        System.out.print("Quante disdette vuoi fare?");
+        int cancelReservations = scanner.nextInt();
+        	for (int i = 0; i< cancelReservations; i++) {
+        		System.out.println(evento.cancelReservations());
+        	}
+        	
+        System.out.println("Posti prenotati: " + evento.getBookedSeats());
+        System.out.println("Posti disponibili: " + (evento.getSeats() - evento.getBookedSeats()));
+        	
+        scanner.close();
 		}
 		
 }

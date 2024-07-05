@@ -77,7 +77,7 @@ public class Evento {
 		}
 	}
 	
-	public String cancelReservation() {
+	public String cancelReservations() {
 		if (LocalDate.now().isAfter(this.date)) {
 			return "L'evento è già passato!";
 		} else if (this.bookedSeats == 0) {
