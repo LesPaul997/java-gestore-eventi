@@ -9,11 +9,11 @@ public class Concerto extends Evento {
 	private double price;
 	
 	//Costruttore
-	public Concerto(String title, LocalDate date, int seats, LocalTime time, double price) {
-		super(title, date, seats);
-		this.time = time;
-		this.price = price;
-	}
+	public Concerto(String title, LocalDate date, LocalTime time, double price, int seats) {
+        super(title, date, seats);
+        this.time = time;
+        this.price = price;
+    }
 	
 	//Getter e Setter per la variabile TIME
 	public LocalTime getTime() {
@@ -47,7 +47,7 @@ public class Concerto extends Evento {
 	
 	@Override
 	public String toString() {
-		return getFormattedDateAndTime() + " - " + getTitle() + " - " + getFormattedPrice();
-	}
+        return super.toString() + ", Time: " + time + ", Price: " + price;
+    }
 	
 }

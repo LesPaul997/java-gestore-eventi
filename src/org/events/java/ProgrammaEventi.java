@@ -32,6 +32,26 @@ public class ProgrammaEventi {
 			return eventiByDate;
 	}
 	
+	//Metodo che restituisce quanti eventi sono presenti nel programma
+	public int getNumberOfEvents() {
+		return this.eventi.size();
+	}
 	
+	//Metodo che svuota la lista di eventi
+	public void clearEvents() {
+		this.eventi.clear();
+	}
 	
+	//Metodo che restituisce una stringa che mostra il titolo del programma e tutti gli eventi ordinati per data
+	public String getOrderedProgram() {
+		StringBuilder sb = new StringBuilder();
+		sb.append(this.title).append("\n");
+		
+		List<Evento>  orderedEvents = new ArrayList<>(this.eventi);
+		Collections.sort(orderedEvents, Comparator.comparing(Evento::getDate));
+			for (Evento evento : orderedEvents) {
+				sb.append(evento.toString()).append("\n");
+			}
+			return sb.toString();
+	}
 }

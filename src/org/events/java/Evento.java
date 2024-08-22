@@ -63,8 +63,6 @@ public class Evento {
 		return bookedSeats;
 	}
 	
-	//Metodo che restituisce la data formattata
-	
 	//Metodi pubblici per le prenotazioni e le disdette
 	public String book() {
 		if (LocalDate.now().isAfter(this.date)) {
